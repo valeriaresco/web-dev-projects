@@ -6,9 +6,12 @@ import projImg3 from "../assets/img/project-img3.png";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
+import {ProjectsGithub} from '../config/projectsGithub'
+import { useEffect } from "react";
 
 export const Projects = () => {
 
+  
   const projects = [
     {
       title: "Business Startup",
@@ -41,7 +44,9 @@ export const Projects = () => {
       imgUrl: projImg3,
     },
   ];
-
+  // ProjectsGithub().then(returns => setProjects(returns)).catch(e => console.log(e))
+  
+  
   return (
     <section className="project" id="project">
       <Container>
