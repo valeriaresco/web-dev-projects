@@ -28,7 +28,7 @@ export interface GithubRepos{
   watchers: number
   forks: number
   html_url:string
-  imageURL?:string
+  imageURL?: string
 }
 
 interface GithubPageProps {
@@ -71,6 +71,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   );
   let repos:GithubRepos[] = await repoRes.json();
   repos = repos.sort((a, b) => b.stargazers_count - a.stargazers_count)
+  let reposDefinitive:GithubRepos[] = []
+
+
   for (let index = 0; index < repos.length; index++) {
     let projectData = repos[index];
 
@@ -84,17 +87,27 @@ export const getStaticProps: GetStaticProps = async (context) => {
       images: string[];
       videos: {}[];
       favicons: string[];
-  }
-  
+    }
+    reposDefinitive.push({
+      description: projectData.description,
+      forks: projectData.forks,
+      homepage: projectData.homepage,
+      html_url: projectData.html_url,
+      id: projectData.id,
+      languages_url: projectData.languages_url,
+      name: projectData.name,
+      stargazers_count: projectData.stargazers_count,
+      url: projectData.url,
+      watchers: projectData.watchers,
+      imageURL: `${imageURL.images[0]}`,
+    })
 
-    projectData =  { ...projectData, imageURL: `${imageURL.images[0]}`}
 
     
   }
-    console.log(repos[0]);
     
   return {
-    props: { title: 'GitHub', repos, user },
+    props: { title: 'GitHub', repos: reposDefinitive, user },
     revalidate: 60*60*12,
   };
 }
