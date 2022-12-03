@@ -32,7 +32,9 @@ export const NavBar = () => {
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
         <Container>
           <Navbar.Brand href="/">
-            <img src='https://github.com/josiassantos15.png' class="border border-3 border-white rounded-circle" alt="Logo" />
+          <div className="logo-icon">
+            <img src="https://github.com/josiassantos15.png" alt="Logo"/>
+          </div>
             {/* <Image
               src='https://github.com/josiassantos15.png'
               alt="Picture of the author"
@@ -53,9 +55,9 @@ export const NavBar = () => {
             </Nav>
             <span className="navbar-text">
               <div className="social-icon">
-              <a href="#"><img src='./img/nav-icon1.svg' alt="Icon" /></a>
-              <a href="#"><img src='./img/nav-icon2.svg' alt="Icon" /></a>
-              <a href="#"><img src='./img/nav-icon2.svg' alt="Icon" /></a>
+              <a href="https://www.linkedin.com/in/josias-santos-265319179/" target="_blank" rel="noopener noreferrer"><img src='./img/nav-icon1.svg' alt="Icon" /></a>
+              <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><img src='./img/nav-icon2.svg' alt="Icon" /></a>
+              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer"><img src='./img/nav-icon3.svg' alt="Icon" /></a>
               </div>
               {/* <HashLink to='#connect'>
                 <button className="vvd"><span>Let’s Connect</span></button>
