@@ -2,9 +2,12 @@ import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
-
-export const Projects = () => {
-
+import { GithubRepos } from "../pages";
+import { getLinkPreview } from "link-preview-js";
+interface ProjectsProps{
+  githubRepos: GithubRepos[]
+}
+export const Projects = ({githubRepos}:ProjectsProps) => {
   
   const projects = [
     {
@@ -67,11 +70,11 @@ export const Projects = () => {
                     <Tab.Pane eventKey="first">
                       <Row>
                         {
-                          projects.map((project, index) => {
+                          githubRepos.map((project) => {                            
                             return (
                               <ProjectCard
-                                key={index}
-                                {...project}
+                                key={project.id}
+                                projectData={project}
                                 />
                             )
                           })
@@ -91,7 +94,7 @@ export const Projects = () => {
           </Col>
         </Row>
       </Container>
-      <img className="background-image-right" src='./img/color-sharp2.png'></img>
+      <img alt="Backgroud image right" className="background-image-right" src='./img/color-sharp2.png'></img>
     </section>
   )
 }
