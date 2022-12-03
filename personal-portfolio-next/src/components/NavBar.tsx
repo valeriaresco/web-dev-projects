@@ -4,8 +4,11 @@ import Image from 'next/image'
 import navIcon1 from '../assets/img/nav-icon1.svg';
 import navIcon2 from '../assets/img/nav-icon2.svg';
 import navIcon3 from '../assets/img/nav-icon3.svg';
-
-export const NavBar = () => {
+import { GithubUser } from "../pages";
+interface NavBarProps{
+  githubUserInfo: GithubUser
+}
+export const NavBar = ({githubUserInfo}:NavBarProps) => {
 
   const [activeLink, setActiveLink] = useState('home');
   const [scrolled, setScrolled] = useState(false);
@@ -24,7 +27,7 @@ export const NavBar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, [])
 
-  const onUpdateActiveLink = (value) => {
+  const onUpdateActiveLink = (value:string) => {
     setActiveLink(value);
   }
 
@@ -32,7 +35,7 @@ export const NavBar = () => {
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
         <Container>
           <Navbar.Brand href="/">
-            <img src='https://github.com/josiassantos15.png' class="border border-3 border-white rounded-circle" alt="Logo" />
+            <img src={githubUserInfo.avatar_url} className="border border-3 border-white rounded-circle" alt="Logo" />
             {/* <Image
               src='https://github.com/josiassantos15.png'
               alt="Picture of the author"
