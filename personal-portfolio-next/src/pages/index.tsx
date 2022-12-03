@@ -42,7 +42,7 @@ export default function Home({ repos, user }:GithubPageProps) {
       <Skills />
       <Projects githubRepos={repos}/>
       {/* <Contact /> */}
-      <Footer />
+      <Footer githubUserInfo={user}/>
     </div>
   )
 }
@@ -61,11 +61,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const repoRes = await fetch(
     `https://api.github.com/users/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}/repos?per_page=100`,
-    {
-      headers: {
-        Authorization: `token ${process.env.GITHUB_API_KEY}`,
-      },
-    }
+    // {
+    //   headers: {
+    //     Authorization: `token ${process.env.GITHUB_API_KEY}`,
+    //   },
+    // }
   );
   let repos:GithubRepos[] = await repoRes.json();
   repos = repos

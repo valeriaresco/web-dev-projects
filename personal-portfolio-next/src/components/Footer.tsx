@@ -1,14 +1,19 @@
 import { Container, Row, Col } from "react-bootstrap";
+import { GithubRepos, GithubUser } from "../pages";
 const currentYear = new Date().getFullYear();
 
-export const Footer = () => {
+interface NavBarProps{
+  githubUserInfo: GithubUser
+}
+
+export const Footer = ({githubUserInfo}:NavBarProps) => {
   return (
     <footer className="footer">
       <Container>
         <Row className="align-items-center">
           <Col size={12} sm={6}>
           <div className="social-icon mt-4">
-            <img src="https://github.com/josiassantos15.png" class="border border-white rounded-circle" alt="Logo"/>
+            <img src={githubUserInfo.avatar_url} className="border border-white rounded-circle" alt="Logo"/>
             <p>Team name</p>
           </div>
           </Col>

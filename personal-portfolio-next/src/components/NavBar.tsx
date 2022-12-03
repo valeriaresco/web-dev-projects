@@ -36,7 +36,7 @@ export const NavBar = ({githubUserInfo}:NavBarProps) => {
         <Container>
           <Navbar.Brand href="/">
           <div className="logo-icon">
-            <img src="https://github.com/josiassantos15.png" alt="Logo"/>
+            <img src={githubUserInfo.avatar_url} alt="Logo"/>
           </div>
 {/* ======= */}
             {/* <img src={githubUserInfo.avatar_url} className="border border-3 border-white rounded-circle" alt="Logo" /> */}
