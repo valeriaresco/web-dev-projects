@@ -118,8 +118,8 @@ span.navbar-text {
     margin-left: 14px;
 }
 .social-icon a {
-    width: 42px;
-    height: 42px;
+    width: 2.625rem;
+    height: 2.625rem;
     background: rgba(217, 217, 217, 0.1);
     display: inline-flex;
     border-radius: 50%;
@@ -129,10 +129,20 @@ span.navbar-text {
     line-height: 1;
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
+.logo-icon img {
+  width: 4.25rem;
+  height: 4.25rem;
+  display: inline-flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+}
 .social-icon a::before {
     content: "";
-    width: 42px;
-    height: 42px;
+    width: 2.625rem;
+    height: 2.625rem;
     position: absolute;
     background-color: #ffffff;
     border-radius: 50%;
