@@ -24,7 +24,7 @@ interface LinkPreview2{
 }
 export const ProjectCard = ({ projectData }:ProjectCardProps) => {
 
-  let imageURL: string = './img/banner-bg.png'
+  let imageURLPrev: string = projectData.imageURL ||'./img/banner-bg.png'
   // getLinkPreview(projectData.html_url).then((data) =>
   // {// console.debug(data)
   // // console.log(data.images[0])
@@ -33,11 +33,12 @@ export const ProjectCard = ({ projectData }:ProjectCardProps) => {
   // }}
   // );
   
+  
   return (
     <Col size={12} sm={6} md={4}>
       <a href={projectData.html_url} rel="noreferrer" target="_blank">
       <div className="proj-imgbx">
-        <img alt="image project" src={imageURL} />
+        <img alt="image project" src={imageURLPrev} />
         <div className="proj-txtx">
           <h4>{projectData.name}</h4>
           <span>{projectData.description}</span>

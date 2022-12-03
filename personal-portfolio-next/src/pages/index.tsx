@@ -9,6 +9,7 @@ import { Projects } from "../components/Projects";
 import { Contact } from "../components/Contact";
 import { Footer } from "../components/Footer";
 import { GetStaticProps } from 'next';
+import { getLinkPreview } from 'link-preview-js';
 
 export interface GithubUser{
   avatar_url: string,
@@ -27,6 +28,7 @@ export interface GithubRepos{
   watchers: number
   forks: number
   html_url:string
+  imageURL?:string
 }
 
 interface GithubPageProps {
@@ -61,16 +63,35 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const repoRes = await fetch(
     `https://api.github.com/users/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}/repos?per_page=100`,
-    // {
-    //   headers: {
-    //     Authorization: `token ${process.env.GITHUB_API_KEY}`,
-    //   },
-    // }
+    {
+      headers: {
+        Authorization: `token ${process.env.GITHUB_API_KEY}`,
+      },
+    }
   );
   let repos:GithubRepos[] = await repoRes.json();
-  repos = repos
-    .sort((a, b) => b.stargazers_count - a.stargazers_count)
-    // .slice(0, 9);
+  repos = repos.sort((a, b) => b.stargazers_count - a.stargazers_count)
+  for (let index = 0; index < repos.length; index++) {
+    let projectData = repos[index];
+
+    const imageURL = await getLinkPreview(projectData.html_url) as {
+      url: string;
+      title: string;
+      siteName: string | undefined;
+      description: string | undefined;
+      mediaType: string;
+      contentType: string | undefined;
+      images: string[];
+      videos: {}[];
+      favicons: string[];
+  }
+  
+
+    projectData =  { ...projectData, imageURL: `${imageURL.images[0]}`}
+
+    
+  }
+    console.log(repos[0]);
     
   return {
     props: { title: 'GitHub', repos, user },
