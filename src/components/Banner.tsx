@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
@@ -57,7 +56,7 @@ export const Banner = () => {
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                 <span className="tagline">Welcome to my Portfolio</span>
-                <h1>{`Hi! I'm Valéria`} <span className="txt-rotate" data-rotate='[ "Web Developer" ]'><span className="wrap">{text}</span></span></h1>
+                <h1>{`Hi! I&apos;m Valéria`} <span className="txt-rotate" data-rotate='[ "Web Developer" ]'><span className="wrap">{text}</span></span></h1>
                   {/* <p> I am {`${yearsOld}`} years old, graduated in Computer Science from the Federal Institute of Pará (IFPA). I currently work as a developer and I am studying for a postgraduate course in Informatics and education. I seek to improve my knowledge in Programming to help people, solve real problems and become a recognized professional. I seek to learn more and help those who need it too.</p> */}
                   <p>I am {`${yearsOld}`} years old, graduated in Analysis and Systems Development from the State University of Pará (UEPA). Currently working as a SQL developer and as SAP B1 support. I'm constantly looking to improve my knowledge in Programming, so that I can help people, solve real problems and become a professional recognized for my work, that's what I want most.</p>
               </div>}
