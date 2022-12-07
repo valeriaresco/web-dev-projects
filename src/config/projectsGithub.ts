@@ -22,12 +22,12 @@ export interface GithubRepositoryesWithURLPage{
 
 export async function ProjectsGithub(){
   const repoRes = await fetch(
-    `https://api.github.com/users/valeriaresco/repos?per_page=100`,
-    // {
-    //   headers: {
-    //     Authorization: `token ${process.env.GITHUB_API_KEY}`,
-    //   },
-    // }
+    `https://api.github.com/users/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}/repos?per_page=100`,
+    {
+      headers: {
+        Authorization: `token ${process.env.GITHUB_API_KEY}`,
+      },
+    }
   );
   let repos:GithubRepos[] = await repoRes.json();
   repos = repos
@@ -40,11 +40,11 @@ export async function ProjectsGithub(){
     const item = repos[index];
     let tagsLanguagesRes = await fetch(
       item.languages_url,
-      // {
-      //   headers: {
-      //     Authorization: `token ${process.env.GITHUB_API_KEY}`,
-      //   },
-      // }
+      {
+        headers: {
+          Authorization: `token ${process.env.GITHUB_API_KEY}`,
+        },
+      }
     );
 
     let tagsLanguages = await tagsLanguagesRes.json();

@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavBar } from "../components/NavBar";
 import { Banner } from "../components/Banner";
@@ -53,21 +52,21 @@ export default function Home({ repos, user }:GithubPageProps) {
 export const getStaticProps: GetStaticProps = async (context) => {
   const userRes = await fetch(
     `https://api.github.com/users/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`,
-    // {
-    //   headers: {
-    //     Authorization: `token ${process.env.GITHUB_API_KEY}`,
-    //   },
-    // }
+    {
+      headers: {
+        Authorization: `token ${process.env.GITHUB_API_KEY}`,
+      },
+    }
   );
   const user:GithubUser = await userRes.json();
 
   const repoRes = await fetch(
     `https://api.github.com/users/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}/repos?per_page=100`,
-    // {
-    //   headers: {
-    //     Authorization: `token ${process.env.GITHUB_API_KEY}`,
-    //   },
-    // }
+    {
+      headers: {
+        Authorization: `token ${process.env.GITHUB_API_KEY}`,
+      },
+    }
   );
   let repos:GithubRepos[] = await repoRes.json();
   repos = repos.sort((a, b) => b.stargazers_count - a.stargazers_count)
