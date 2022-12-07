@@ -22,7 +22,7 @@ export interface GithubRepositoryesWithURLPage{
 
 export async function ProjectsGithub(){
   const repoRes = await fetch(
-    `https://api.github.com/users/madsonAlan/repos?per_page=100`,
+    `https://api.github.com/users/valeriaresco/repos?per_page=100`,
     // {
     //   headers: {
     //     Authorization: `token ${process.env.GITHUB_API_KEY}`,
